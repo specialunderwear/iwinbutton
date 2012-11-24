@@ -1,0 +1,101 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+  <Script file="IwinButton.lua"/>
+  <!-- Tha frame that is uzed -->
+  <MessageFrame name="IwinButtonThingy" insertMode="TOP" parent="UIParent" frameStrata="LOW" toplevel="true" >
+    <Size><AbsDimension x="512" y="60"/></Size>
+        <Anchors><Anchor point="CENTER"><Offset><AbsDimension x="0" y="200"/></Offset></Anchor></Anchors>
+    <Scripts>
+      <OnLoad>
+       this:RegisterEvent("VARIABLES_LOADED");
+       this:RegisterEvent("UNIT_COMBAT");
+       this:RegisterEvent("PLAYER_ENTERING_WORLD");
+       this:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_CREATURE_DAMAGE");
+       this:RegisterEvent("CHAT_MSG_SPELL_HOSTILEPLAYER_DAMAGE");
+       this:RegisterEvent("CHAT_MSG_SPELL_HOSTILEPLAYER_BUFF");
+       this:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_CREATURE_BUFF");
+       this:RegisterEvent("CHAT_MSG_SPELL_CREATURE_VS_SELF_BUFF");
+       this:RegisterEvent("PLAYER_TARGET_CHANGED");
+      </OnLoad>
+      <OnEvent>
+       onIwinButtonEvent();     
+      </OnEvent>
+      <OnUpdate>
+        onIwinUpdate()
+      </OnUpdate>
+    </Scripts>
+    <FontString inherits="NumberFontNormalHuge" justifyH="CENTER"/>
+  </MessageFrame>
+
+  <Frame name="RejuvUp" frameStrata="HIGH" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+    <Scripts>
+      <OnLoad>
+        this:RegisterForDrag("LeftButton");
+      </OnLoad>
+      <OnDragStart>
+        this:StartMoving();
+      </OnDragStart>
+      <OnDragStop>
+        this:StopMovingOrSizing()
+      </OnDragStop>
+      <OnMouseUp>
+        this:StopMovingOrSizing();
+      </OnMouseUp>
+    </Scripts>
+    <Size>
+      <AbsDimension x="64" y="64"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP"/>
+    </Anchors>
+    <Backdrop name="$parentBackdrop" bgFile="Interface\Icons\Spell_Nature_Rejuvenation" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="false">
+      <EdgeSize>
+        <AbsValue val="16"/>
+      </EdgeSize>
+      <TileSize>
+        <AbsValue val="64"/>
+      </TileSize>
+      <BackgroundInsets>
+        <AbsInset left="5" right="5" top="5" bottom="5"/>
+      </BackgroundInsets>
+    </Backdrop>
+  </Frame>
+
+  <Frame name="RegrowthUp" frameStrata="HIGH" toplevel="true" enableMouse="true" movable="true" parent="UIParent" hidden="true">
+    <Scripts>
+      <OnLoad>
+        this:RegisterForDrag("LeftButton");
+      </OnLoad>
+      <OnDragStart>
+        this:StartMoving();
+      </OnDragStart>
+      <OnDragStop>
+        this:StopMovingOrSizing()
+      </OnDragStop>
+      <OnMouseUp>
+        this:StopMovingOrSizing();
+      </OnMouseUp>
+    </Scripts>
+    <Size>
+      <AbsDimension x="64" y="64"/>
+    </Size>
+    <Anchors>
+      <Anchor point="TOP">
+        <Offset>
+	   <AbsDimension x="64" y="0"/>
+        </Offset>
+      </Anchor>
+    </Anchors>
+    <Backdrop name="$parentBackdrop" bgFile="Interface\Icons\Spell_Nature_ResistNature" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="false">
+      <EdgeSize>
+        <AbsValue val="16"/>
+      </EdgeSize>
+      <TileSize>
+        <AbsValue val="64"/>
+      </TileSize>
+      <BackgroundInsets>
+        <AbsInset left="5" right="5" top="5" bottom="5"/>
+      </BackgroundInsets>
+    </Backdrop>
+  </Frame>
+
+</Ui>

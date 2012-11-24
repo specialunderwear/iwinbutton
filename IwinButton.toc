@@ -1,0 +1,6 @@
+## Interface: 11000
+## Title: IwinButton
+## Version: 0.01 
+## Notes: I win button
+## SavedVariables: ShowEnemyCast
+IwinButton.xml
